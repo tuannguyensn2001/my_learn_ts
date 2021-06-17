@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from 'react';
+import {Router, Switch, Route} from "react-router-dom";
+import {ChakraProvider} from "@chakra-ui/react";
+import {useAppDispatch} from "./apps/store";
+import {dispatchMe} from "./features/Auth/slice";
+import routes from "./routes";
+import {createBrowserHistory} from "history";
+
+const history = createBrowserHistory();
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(dispatchMe());
+    }, [dispatch])
+
+    return (
+        <ChakraProvider>
+            <Router history={history}>
+                <Switch>
+                    {routes.map(route => (
+                        <Route
+                            // @ts-ignore
+                            key={route.path}
+                            {...route} />
+                    ))}
+                </Switch>
+            </Router>
+        </ChakraProvider>
+    );
 }
 
 export default App;
