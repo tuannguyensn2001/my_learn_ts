@@ -5,7 +5,8 @@ import {fetchLogin, fetchMe} from "../services";
 
 export interface initAuthState {
     isLoggedIn: boolean,
-    user: IUser | null
+    user: IUser | null,
+    isLoading: boolean
 }
 
 interface fetchLoginData {
@@ -37,7 +38,8 @@ const authSlice = createSlice({
     name: 'auth',
     initialState: {
         isLoggedIn: false,
-        user: null
+        user: null,
+        isLoading: false
     } as initAuthState,
     reducers: {},
     extraReducers: (builder => {
@@ -49,8 +51,13 @@ const authSlice = createSlice({
         builder.addCase(dispatchMe.fulfilled, (state, {payload}) => {
             state.isLoggedIn = true;
             state.user = payload;
+            state.isLoading = false;
+        });
+        builder.addCase(dispatchMe.pending, (state, {payload}) => {
+            state.isLoading = true;
         });
         builder.addCase(dispatchMe.rejected, (state, {payload}) => {
+            state.isLoading = false;
             localStorage.removeItem('token');
         })
     })

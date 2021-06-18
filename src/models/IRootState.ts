@@ -1,10 +1,13 @@
 import {CaseReducer} from "@reduxjs/toolkit";
 import {initAuthState} from "../features/Auth/slice";
+import {initCartState} from "../features/Cart/slice";
 
 export declare interface IRootState {
-    auth: initAuthState
+    auth: initAuthState,
+    cart: initCartState
 }
 
 export interface rootReducer {
-    auth: CaseReducer
+    auth: CaseReducer,
+    cart: CaseReducer
 }

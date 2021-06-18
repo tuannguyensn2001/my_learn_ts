@@ -30,6 +30,7 @@ export default function Navbar() {
     const {isOpen, onToggle} = useDisclosure();
 
     const {isLoggedIn, user} = useAppSelector(state => state.auth);
+    const amount: number = useAppSelector(state => state.cart.courseList.length);
 
     return (
         <Box>
@@ -61,7 +62,9 @@ export default function Navbar() {
                         textAlign={useBreakpointValue({base: 'center', md: 'left'})}
                         fontFamily={'heading'}
                         color={useColorModeValue('gray.800', 'white')}>
-                        Logo
+                        <NavLink to={'/'}>
+                            Trang chủ
+                        </NavLink>
                     </Text>
 
                     <Flex display={{base: 'none', md: 'flex'}} ml={10}>
@@ -85,6 +88,13 @@ export default function Navbar() {
                             Đăng nhập
                         </NavLink>}
                         {isLoggedIn && <p>{user?.name}</p>}
+                    </Button>
+                    <Button
+                        fontSize={'sm'}
+                        fontWeight={400}
+                        variant={'link'}
+                    >
+                        {isLoggedIn && <NavLink to={'/cart'}>Giỏ hàng ({amount})</NavLink>}
                     </Button>
                     <Button
                         display={{base: 'none', md: 'inline-flex'}}

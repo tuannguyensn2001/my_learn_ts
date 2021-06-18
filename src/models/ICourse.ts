@@ -1,3 +1,4 @@
+import {IChapter} from "./IChapter";
 import {IMedia} from "./IMedia";
 import {ITag} from "./ITag";
 
@@ -13,5 +14,9 @@ export declare interface ICourse {
     updated_at: string,
     tag?: ITag,
     media?: IMedia,
-    pivot?: null
+    pivot?: null,
+    chapters?: IChapter[],
+    media_id?: number,
+    tag_id?: number,
+    
 }

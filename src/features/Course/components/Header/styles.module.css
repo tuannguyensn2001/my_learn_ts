@@ -1,0 +1,75 @@
+@media (max-width: 1199px) {
+
+    /* Header */
+    .videoWrapper {
+        margin-top: 1rem;
+        display: block !important;
+    }
+
+    .head__buttons {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .buttons__btn {
+        margin: 0 !important;
+        width: 100%;
+        margin-bottom: 8px !important;
+
+    }
+
+    .buttons__btn,
+    .mobile-btn {
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
+        text-align: center;
+
+    }
+
+    .mobile-btn {
+        display: block !important;
+        margin: 0 auto !important;
+        margin-top: 2rem !important;
+        background-color: #ec5252;
+        border: none !important;
+    }
+
+    /* End header */
+
+    /* Buy course */
+    .buy_course {
+        display: none;
+    }
+    /* End buy course */
+}
+
+/* Phone */
+@media (max-width: 765px) {
+
+    /* Header */
+    .head__title {
+        font-size: 1.8rem !important;
+    }
+
+    .head__des {
+        font-size: 1.2rem !important;
+    }
+
+    .head__created-by {
+        text-align: center;
+        margin-top: 1.2rem;
+        font-size: 1.3rem !important;
+    }
+    /* End header */
+
+    /* Instructor */
+
+    .ins__info {
+        justify-content: space-evenly;
+    }
+
+    .ins__overview {
+        margin: 0;
+    }
+    /* End instructor */
+}

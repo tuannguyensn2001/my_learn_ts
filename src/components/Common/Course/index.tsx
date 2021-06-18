@@ -17,7 +17,7 @@ const {
 } = styles;
 
 interface CourseProps {
-    course: Pick<ICourse, 'name' | 'slug' | 'price' | 'tag' | 'media' >
+    course: Pick<ICourse, 'name' | 'slug' | 'price' | 'tag' | 'media'>
 }
 
 
@@ -26,7 +26,7 @@ function Course({course}: CourseProps) {
     return (
         <CourseItem>
             <ThumbnailWrapper>
-                <Link to={"/"}>
+                <Link to={`/course/${course.slug}`}>
                     <Thumbnail src={course?.media?.source}/>
                 </Link>
                 <Category to={'/'}>{course?.tag?.category?.name}</Category>

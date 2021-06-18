@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from "./Navbar";
 
 interface LayoutProps {
-    children: JSX.Element | JSX.Element[]
+    children: JSX.Element | JSX.Element[] | undefined;
 }
 
 
