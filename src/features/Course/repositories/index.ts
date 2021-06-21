@@ -6,6 +6,11 @@ import {fetchCourse} from "../services";
 export const getCourse = async (slug: string): Promise<ICourse> => {
     const response: AxiosResponse = await fetchCourse(slug);
     const data: ICourse = response.data;
+
+    return setIndexCourse(data);
+}
+
+export const setIndexCourse = (data: ICourse): ICourse => {
     const chapters: IChapter[] | undefined = data.chapters;
 
     let count: number = 0;
@@ -21,5 +26,4 @@ export const getCourse = async (slug: string): Promise<ICourse> => {
     data.chapters = chapters;
 
     return data;
-
 }

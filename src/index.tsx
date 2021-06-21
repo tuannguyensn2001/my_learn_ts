@@ -6,6 +6,7 @@ import store from "./apps/store";
 import reportWebVitals from './reportWebVitals';
 import './i18n/config';
 import {QueryClientProvider, QueryClient} from "react-query";
+import './style.css'
 
 const queryClient = new QueryClient();
 

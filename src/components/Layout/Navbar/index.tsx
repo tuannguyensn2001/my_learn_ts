@@ -13,7 +13,7 @@ import {
     PopoverContent,
     useColorModeValue,
     useBreakpointValue,
-    useDisclosure,
+    useDisclosure, Avatar,
 } from '@chakra-ui/react';
 
 import {Link as NavLink} from 'react-router-dom';
@@ -96,7 +96,7 @@ export default function Navbar() {
                     >
                         {isLoggedIn && <NavLink to={'/cart'}>Giỏ hàng ({amount})</NavLink>}
                     </Button>
-                    <Button
+                    {!isLoggedIn && <Button
                         display={{base: 'none', md: 'inline-flex'}}
                         fontSize={'sm'}
                         fontWeight={600}
@@ -106,8 +106,22 @@ export default function Navbar() {
                         _hover={{
                             bg: 'pink.300',
                         }}>
-                        Sign Up
-                    </Button>
+                    </Button>}
+
+
+                    {isLoggedIn &&
+                    <Box
+                        display={{base: 'none', md: 'inline-flex'}}
+                        fontSize={'sm'}
+                        fontWeight={600}
+                        color={'white'}
+                        href={'#'}
+                    >
+                        <Avatar src={user?.profile?.media?.source}/>
+                    </Box>
+                    }
+
+
                 </Stack>
             </Flex>
 

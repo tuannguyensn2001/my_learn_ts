@@ -35,7 +35,6 @@ function App() {
 
     return (
         <ChakraProvider>
-            {isLoading && <div>Ngu</div>}
             <Router history={history}>
                 <Switch>
                     {routes.map(route => (

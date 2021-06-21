@@ -5,6 +5,7 @@ const routesCourse: RouteProps[] = [
     {
         path: '/course/:course',
         component: CourseDetail,
+        exact: true
     }
 ]
 
