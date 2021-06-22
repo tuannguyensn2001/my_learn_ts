@@ -4,6 +4,7 @@ import routesCart from "../features/Cart/routes";
 import routesCourse from "../features/Course/routes";
 import routesHome from "../features/Home/routes";
 import routeLesson from "../features/Lesson/Route";
+import routeClassroom from "../features/Classroom/routes";
 
 
 const routes: RouteProps[] = [
@@ -11,7 +12,8 @@ const routes: RouteProps[] = [
     ...routesAuth,
     ...routesCourse,
     ...routesCart,
-    ...routeLesson
+    ...routeLesson,
+    ...routeClassroom
 ]
 
 export default routes;

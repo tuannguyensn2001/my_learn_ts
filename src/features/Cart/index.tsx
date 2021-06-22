@@ -36,7 +36,7 @@ function Cart() {
 
     const totalNumber = (): number => {
         return selected.reduce((total, id): number => {
-            const price = courseList.find(item => item.id === id)?.price || 0;
+            const price = courseList.find((item) => item.id === id)?.price || 0;
             return total + price;
         }, 0)
     }
