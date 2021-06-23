@@ -1,11 +1,9 @@
-import {takeEvery} from 'redux-saga/effects';
-import {PayloadAction} from "@reduxjs/toolkit";
-
-function* middleware(action : PayloadAction) {
-    console.log(action);
-}
+import {takeEvery, all} from 'redux-saga/effects';
+import classroomSaga from "../features/Classroom/slice/saga";
 
 
 export default function* rootSaga() {
-    yield takeEvery('*', middleware);
+    yield all([
+        classroomSaga
+    ])
 }

@@ -12,12 +12,15 @@ const classroomSlice = createSlice({
     reducers: {
         increment: (state, action: PayloadAction<number>) => {
             state.count += 1;
+        },
+        incrementSaga: (state, action: PayloadAction<number>) => {
+
         }
     }
 })
 
 const {reducer, actions} = classroomSlice;
 
-export const {increment} = actions;
+export const {increment, incrementSaga} = actions;
 
 export default reducer;
