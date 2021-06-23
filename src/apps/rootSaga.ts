@@ -1,5 +1,5 @@
 import {takeEvery, all} from 'redux-saga/effects';
-import classroomSaga from "../features/Classroom/slice/saga";
+import classroomSaga from "../modules/user/features/Classroom/slice/saga";
 
 
 export default function* rootSaga() {

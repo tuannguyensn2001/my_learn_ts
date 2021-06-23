@@ -1,11 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {rootReducer, IRootState} from "../models/IRootState";
-import authSlice from '../features/Auth/slice/index';
+import authSlice from '../modules/user/features/Auth/slice/index';
 import {useDispatch, TypedUseSelectorHook, useSelector} from 'react-redux';
-import cartSlice from '../features/Cart/slice/index';
+import cartSlice from '../modules/user/features/Cart/slice/index';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from "./rootSaga";
-import classroomSlice from "../features/Classroom/slice";
+import classroomSlice from "../modules/user/features/Classroom/slice";
 
 const sagaMiddleware = createSagaMiddleware();
 

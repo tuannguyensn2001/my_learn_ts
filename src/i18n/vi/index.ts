@@ -1,13 +1,9 @@
-import {banner} from "./banner";
-import {courseBanner} from "./courseBanner";
-import {auth} from "./auth";
-import {courseDetailHeader} from "./courseDetailHeader";
+import viAdmin from "./admin";
+import viUser from "./user";
 
 const vi = {
-    banner,
-    courseBanner,
-    auth,
-    courseDetailHeader
+    user: viUser,
+    admin: viAdmin
 }
 
 export default vi;

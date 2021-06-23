@@ -1,19 +1,11 @@
 import {RouteProps} from "react-router-dom";
-import routesAuth from "../features/Auth/routes";
-import routesCart from "../features/Cart/routes";
-import routesCourse from "../features/Course/routes";
-import routesHome from "../features/Home/routes";
-import routeLesson from "../features/Lesson/Route";
-import routeClassroom from "../features/Classroom/routes";
+import routesAdminModule from "../modules/admin/routes";
+import routesUserModule from "../modules/user/routes";
 
 
 const routes: RouteProps[] = [
-    ...routesHome,
-    ...routesAuth,
-    ...routesCourse,
-    ...routesCart,
-    ...routeLesson,
-    ...routeClassroom
+    ...routesUserModule,
+    ...routesAdminModule
 ]
 
 export default routes;
