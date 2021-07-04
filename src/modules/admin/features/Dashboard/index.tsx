@@ -1,39 +1,31 @@
-import {useState} from 'react'
-import {Box, useBreakpointValue} from '@chakra-ui/react'
-
-import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
-
-const smVariant = {navigation: 'drawer', navigationButton: true}
-const mdVariant = {navigation: 'sidebar', navigationButton: false}
-
+import {Flex, Text, IconButton, Box} from '@chakra-ui/react'
+import {FiMenu} from 'react-icons/fi'
 
 function Dashboard() {
-    const [isSidebarOpen, setSidebarOpen] = useState(false)
-    const variants = useBreakpointValue({base: smVariant, md: mdVariant})
-
-    const toggleSidebar = () => setSidebarOpen(!isSidebarOpen)
-
 
 
     return (
-        <>
-
-            <Sidebar
-                // @ts-ignore
-                variant={variants?.navigation}
-                isOpen={isSidebarOpen}
-                onClose={toggleSidebar}
-            />
-            <Box
-                // @ts-ignore
-                ml={!variants?.navigationButton && 200}>
-                <Header
-                    showSidebarButton={variants?.navigationButton}
-                    onShowSidebar={toggleSidebar}
-                />
+        <Flex w="100%">
+            <Sidebar/>
+            {/*<Flex*/}
+            {/*    pos="absolute"*/}
+            {/*    top="50%"*/}
+            {/*    left="50%"*/}
+            {/*    transform="translate(-50%, -50%)"*/}
+            {/*>*/}
+            {/*    <Text>Click the*/}
+            {/*        <IconButton*/}
+            {/*            background="none"*/}
+            {/*            _hover={{background: 'none'}}*/}
+            {/*            icon={<FiMenu/>}*/}
+            {/*            aria-label={'hihi'}/>*/}
+            {/*        to resize the vertical navigation bar.</Text>*/}
+            {/*</Flex>*/}
+            <Box marginLeft={'50px'}>
+                <p>Hhi</p>
             </Box>
-        </>
+        </Flex>
     )
 }
 

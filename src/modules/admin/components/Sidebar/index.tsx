@@ -1,105 +1,82 @@
+import React, { useState } from 'react'
 import {
-    Box,
-    Button,
-    Drawer,
-    DrawerOverlay,
-    DrawerCloseButton,
-    DrawerHeader,
-    DrawerBody,
-    DrawerContent,
-    VStack,
-    Accordion,
-    AccordionItem,
-    AccordionButton,
-    AccordionPanel,
-    AccordionIcon,
+    Flex,
+    Text,
+    IconButton,
+    Divider,
+    Avatar,
+    Heading
 } from '@chakra-ui/react'
+import {
+    FiMenu,
+    FiHome,
+    FiCalendar,
+    FiUser,
+    FiDollarSign,
+    FiBriefcase,
+    FiSettings
+} from 'react-icons/fi'
+import { IoPawOutline } from 'react-icons/io5'
+import NavItem from "../NavItem";
 
-import {MinusIcon,AddIcon} from "@chakra-ui/icons";
-
-
-interface Props {
-    onClose: any
-    isOpen: boolean
-    variant: 'drawer' | 'sidebar'
-}
-
-const SidebarContent = ({onClick}: { onClick: any }) => (
-    <VStack>
-        <Accordion allowMultiple>
-            <AccordionItem>
-                <h2>
-                    <AccordionButton>
-                        <Box flex="1" textAlign="left">
-                            Section 1 title
-                        </Box>
-                        <AccordionIcon/>
-                    </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat.
-                </AccordionPanel>
-            </AccordionItem>
-
-            <AccordionItem>
-                {({isExpanded}) => (
-                    <>
-                        <h2>
-                            <AccordionButton>
-                                <Box flex="1" textAlign="left">
-                                    Section 2 title
-                                </Box>
-                                {isExpanded ? (
-                                    <MinusIcon fontSize="12px"/>
-                                ) : (
-                                    <AddIcon fontSize="12px"/>
-                                )}
-                            </AccordionButton>
-                        </h2>
-                        <AccordionPanel pb={4}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat.
-                        </AccordionPanel>
-                    </>
-                )}
-            </AccordionItem>
-        </Accordion>
-    </VStack>
-)
-
-const Sidebar = ({isOpen, variant, onClose}: Props) => {
-    return variant === 'sidebar' ? (
-        <Box
-            position="fixed"
-            left={0}
-            p={5}
-            w="200px"
-            top={0}
-            h="100%"
-            bg="#dfdfdf"
+export default function Sidebar() {
+    const [navSize, changeNavSize] = useState("large")
+    return (
+        <Flex
+            pos="sticky"
+            left="5"
+            h="95vh"
+            marginTop="2.5vh"
+            boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
+            borderRadius={navSize == "small" ? "15px" : "30px"}
+            w={navSize === "small" ? "75px" : "200px"}
+            flexDir="column"
+            justifyContent="space-between"
         >
-            <SidebarContent onClick={onClose}/>
-        </Box>
-    ) : (
-        <Drawer isOpen={isOpen}
-                placement="left"
-                onClose={onClose}>
-            <DrawerOverlay>
-                <DrawerContent>
-                    <DrawerCloseButton/>
-                    <DrawerHeader>Chakra-UI</DrawerHeader>
-                    <DrawerBody>
-                        <SidebarContent onClick={onClose}/>
-                    </DrawerBody>
-                </DrawerContent>
-            </DrawerOverlay>
-        </Drawer>
+            <Flex
+                p="5%"
+                flexDir="column"
+                w="100%"
+                alignItems={navSize == "small" ? "center" : "flex-start"}
+                as="nav"
+            >
+                <IconButton
+                    background="none"
+                    mt={5}
+                    _hover={{ background: 'none' }}
+                    icon={<FiMenu />}
+                    onClick={() => {
+                        if (navSize == "small")
+                            changeNavSize("large")
+                        else
+                            changeNavSize("small")
+                    }}
+                 aria-label={'hihi'}/>
+                <NavItem navSize={navSize} icon={FiHome} title="Dashboard" description="This is the description for the dashboard." />
+                <NavItem navSize={navSize} icon={FiCalendar} title="Calendar" active />
+                <NavItem navSize={navSize} icon={FiUser} title="Clients" />
+                <NavItem navSize={navSize} icon={IoPawOutline} title="Animals" />
+                <NavItem navSize={navSize} icon={FiDollarSign} title="Stocks" />
+                <NavItem navSize={navSize} icon={FiBriefcase} title="Reports" />
+                <NavItem navSize={navSize} icon={FiSettings} title="Settings" />
+            </Flex>
+
+            <Flex
+                p="5%"
+                flexDir="column"
+                w="100%"
+                alignItems={navSize == "small" ? "center" : "flex-start"}
+                mb={4}
+            >
+                <Divider display={navSize == "small" ? "none" : "flex"} />
+                <Flex mt={4} align="center">
+                    <Avatar size="sm" src="avatar-1.jpg" />
+                    <Flex flexDir="column" ml={4} display={navSize == "small" ? "none" : "flex"}>
+                        <Heading as="h3" size="sm">Sylwia Weller</Heading>
+                        <Text color="gray">Admin</Text>
+                    </Flex>
+                </Flex>
+            </Flex>
+        </Flex>
     )
 }
-
-export default Sidebar
