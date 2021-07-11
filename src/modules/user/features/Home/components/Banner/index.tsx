@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import useLocalization from "../../../../../../hooks/useLocalization";
 import styles from "./styled";
+import { Box } from '@chakra-ui/layout';
 
 const {
     BannerWrapper,
@@ -29,9 +30,9 @@ function Banner() {
 
 
     return (
-        <div>
+        <Box>
             <BannerWrapper height={`${height - 60}px`}>
-                <div>
+                <Box>
                     <BannerContent>
                         <BannerWelcome>{trans('banner.welcome')}</BannerWelcome>
                         <BannerTitle>{trans('banner.web_name')}</BannerTitle>
@@ -40,9 +41,9 @@ function Banner() {
                             <BannerButton>{trans('banner.about')}</BannerButton>
                         </BannerButtonCover>
                     </BannerContent>
-                </div>
+                </Box>
             </BannerWrapper>
-        </div>
+        </Box>
 
     )
 }

@@ -57,8 +57,13 @@ function Cart() {
     return (
         <Layout>
 
-            <Container maxW={'container.xl'}>
-                <Table>
+            <Container maxW={'container.lg'}>
+                <Table
+                    bgColor='rgba(0, 0, 0, .02)'
+                    borderRadius='md'
+                    boxShadow='md'
+                    mt='.5rem'
+                    fontSize='1rem'>
                     <Thead>
                         <Tr>
                             <Th>
@@ -91,11 +96,19 @@ function Cart() {
                         <Tr>
                             <Th/>
                             <Th/>
-                            <Th>
+                            <Th
+                                fontSize='.8rem'>
                                 Tổng tiền: {totalNumber()}
                             </Th>
                             <Th>
-                                <Button disabled={selected.length === 0}>Mua</Button>
+                                <Button 
+                                    disabled={selected.length === 0}
+                                    bgColor='#20cbf9'
+                                    color='#fff'
+                                    width='100%'
+                                    _hover={{
+                                        bgColor: '#00a9d6'
+                                    }}>Mua</Button>
                             </Th>
 
                         </Tr>

@@ -1,31 +1,65 @@
 import React from "react";
 import useLocalization from "../../../../../../hooks/useLocalization";
+import { Box, Flex } from "@chakra-ui/layout";
 
 export default function Body() {
 
     const {trans} = useLocalization();
 
     return (
-        <div className="des-box container col-xl-6 offset-xl-1 col-lg-9 col-md-10 col-sm-10">
-            <div className="des-box__heading">{trans('courseDetailBody.title')}</div>
-            <div className="des-box__body">
-                <div className="body__cover">
-                    <div className="body__cover-col">
-                        <i className="check-icon fal fa-check"></i>Đầu tiên
-                    </div>
-                    <div className="body__cover-col">
-                        <i className="check-icon fal fa-check"></i>Tiếp theo
-                    </div>
-                </div>
-                <div className="body__cover">
-                    <div className="body__cover-col">
-                        <i className="check-icon fal fa-check"></i>Thêm nữa
-                    </div>
-                    <div className="body__cover-col">
-                        <i className="check-icon fal fa-check"></i>Cuối cùng
-                    </div>
-                </div>
-            </div>
-        </div>
+        <Box 
+        className= 'des-box'
+        background= '#f7f9fa'
+        color= '#000'
+        border= '1px solid #ccc'
+        borderRadius= '4px'
+        mt= '48px'
+        padding= '0px 20px'>
+            <Box
+            className= 'des-box__heading'
+            fontSize= '1.5rem'
+            fontWeight= '700'
+            margin= '16px 0'>{trans('courseDetailBody.title')}</Box>
+            <Box 
+            className="des-box__body"
+            mb='16px'>
+                <Flex 
+                className="body__cover"
+                mb='8px'
+                justifyContent= 'space-between'
+                color= '#1c1d1f'>
+                    <Box
+                    className="body__cover-col"
+                    width= '100%'
+                    fontSize= '1rem'>
+                        <i className="check-icon fal fa-check"></i>Something
+                    </Box>
+                    <Box 
+                    className="body__cover-col"
+                    width= '100%'
+                    fontSize= '1rem'>
+                        <i className="check-icon fal fa-check"></i>Something
+                    </Box>
+                </Flex>
+                <Flex 
+                className="body__cover"
+                mb='8px'
+                justifyContent= 'space-between'
+                color= '#1c1d1f'>
+                    <Box 
+                    className="body__cover-col"
+                    width= '100%'
+                    fontSize= '1rem'>
+                        <i className="check-icon fal fa-check"></i>Something
+                    </Box>
+                    <Box 
+                    className="body__cover-col"
+                    width= '100%'
+                    fontSize= '1rem'>
+                        <i className="check-icon fal fa-check"></i>Something
+                    </Box>
+                </Flex>
+            </Box>
+        </Box>
     )
 }

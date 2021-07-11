@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import {ICourse} from "../../../../../../models/ICourse";
 import useLocalization from "../../../../../../hooks/useLocalization";
+import { Box } from "@chakra-ui/layout";
 
 
 const styles = require('./styles.module.css');
@@ -129,7 +130,7 @@ function Header({course}: HeaderProp) {
 
     return (
         <HeaderWrapper className={"row head"}>
-            <div className="container col-xl-6 offset-xl-1 col-lg-9 col-md-10 col-sm-10">
+            <Box className="container col-xl-6 offset-xl-1 col-lg-9 col-md-10 col-sm-10">
                 <HeadLink className="head__link">
                     <GuideLink className="guide-link">Lorem, ipsum dolor.</GuideLink>
                     <ForwardArrow className="far fa-chevron-right forward-arrow"/>
@@ -158,7 +159,7 @@ function Header({course}: HeaderProp) {
                         className="fal fa-share buttons__icon"/></Button>
                     <Button className={buttonsBtnClass}>{trans('courseDetailHeader.gift')}</Button>
                 </HeadButton>
-            </div>
+            </Box>
         </HeaderWrapper>
     )
 }
