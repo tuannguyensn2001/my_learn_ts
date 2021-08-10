@@ -1,9 +1,9 @@
-import viAdmin from "./admin";
+import viAdmin from "./backend";
 import viUser from "./user";
 
 const vi = {
     user: viUser,
-    admin: viAdmin
+    backend: viAdmin
 }
 
 export default vi;

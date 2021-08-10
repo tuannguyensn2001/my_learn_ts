@@ -1,0 +1,1 @@
+export type Status = 'PUBLISH' | 'PRERELEASE' | 'RELEASE' | 'PRIVATE';

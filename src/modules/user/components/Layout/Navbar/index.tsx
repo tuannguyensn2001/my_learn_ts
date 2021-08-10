@@ -1,296 +1,92 @@
-import {
-    Box,
-    Flex,
-    Text,
-    IconButton,
-    Button,
-    Stack,
-    Collapse,
-    Icon,
-    Link,
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
-    useColorModeValue,
-    useBreakpointValue,
-    useDisclosure, Avatar,
-} from '@chakra-ui/react';
+import styles from './style.module.scss'
+import {Container} from "@chakra-ui/react";
+import {Link} from 'react-router-dom';
+import {BellIcon, TriangleDownIcon, HamburgerIcon} from "@chakra-ui/icons";
+import {useEffect, useState} from "react";
 
-import {Link as NavLink} from 'react-router-dom';
+function Navbar() {
 
-import {
-    HamburgerIcon,
-    CloseIcon,
-    ChevronDownIcon,
-    ChevronRightIcon,
-} from '@chakra-ui/icons';
-import {useAppSelector} from "../../../../../apps/store";
+    const [classNavbarWrapper, setClassNavbarWrapper] = useState<string>(styles.navbar_wrapper);
 
-export default function Navbar() {
-    const {isOpen, onToggle} = useDisclosure();
+    useEffect(() => {
+        const handleOnScroll = (event: any) => {
+            if (window.scrollY > 5) {
+                // setClassNavbarWrapper(prevState => {
+                //     if (!prevState.includes(styles.active)) {
+                //         return [prevState, styles.active].join(' ');
+                //     }
+                //     return prevState;
+                // })
 
-    const {isLoggedIn, user} = useAppSelector(state => state.auth);
-    const amount: number = useAppSelector(state => state.cart.courseList.length);
+                if (!classNavbarWrapper.includes(styles.active)) {
+                    setClassNavbarWrapper(prevState => [prevState, styles.active].join(' '));
+                }
+            } else {
+                setClassNavbarWrapper(prevState => prevState.replace(styles.active, ''));
+            }
+        }
+
+        window.addEventListener('scroll', handleOnScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleOnScroll);
+        }
+    })
+
 
     return (
-        <Box>
-            <Flex
-                bg={useColorModeValue('white', 'gray.800')}
-                color={useColorModeValue('gray.600', 'white')}
-                minH={'60px'}
-                py={{base: 2}}
-                px={{base: 4}}
-                borderBottom={1}
-                borderStyle={'solid'}
-                borderColor={useColorModeValue('gray.200', 'gray.900')}
-                align={'center'}
-                boxShadow='md'>
-                <Flex
-                    flex={{base: 1, md: 'auto'}}
-                    ml={{base: -2}}
-                    display={{base: 'flex', md: 'none'}}>
-                    <IconButton
-                        onClick={onToggle}
-                        icon={
-                            isOpen ? <CloseIcon w={3} h={3}/> : <HamburgerIcon w={5} h={5}/>
-                        }
-                        variant={'ghost'}
-                        aria-label={'Toggle Navigation'}
-                    />
-                </Flex>
-                <Flex flex={{base: 1}} justify={{base: 'center', md: 'start'}}>
-                    <Text
-                        textAlign={useBreakpointValue({base: 'center', md: 'left'})}
-                        fontFamily={'heading'}
-                        color={useColorModeValue('gray.800', 'white')}>
-                        <NavLink to={'/'}>
-                            Trang chủ
-                        </NavLink>
-                    </Text>
-
-                    <Flex display={{base: 'none', md: 'flex'}} ml={10}>
-                        <DesktopNav/>
-                    </Flex>
-                </Flex>
-
-                <Stack
-                    flex={{base: 1, md: 0}}
-                    justify={'flex-end'}
-                    direction={'row'}
-                    spacing={6}>
-                    <Button
-                        fontSize={'sm'}
-                        fontWeight={400}
-                        variant={'link'}
-                    >
-                        {!isLoggedIn &&
-                        <NavLink
-                            to={'/login'}>
-                            Đăng nhập
-                        </NavLink>}
-                        {isLoggedIn && <p>{user?.name}</p>}
-                    </Button>
-                    <Button
-                        fontSize={'sm'}
-                        fontWeight={400}
-                        variant={'link'}
-                    >
-                        {isLoggedIn && <NavLink to={'/cart'}>Giỏ hàng ({amount})</NavLink>}
-                    </Button>
-                    {!isLoggedIn && <Button
-                        display={{base: 'none', md: 'inline-flex'}}
-                        fontSize={'sm'}
-                        fontWeight={600}
-                        color={'white'}
-                        bg={'pink.400'}
-                        href={'#'}
-                        _hover={{
-                            bg: 'pink.300',
-                        }}>
-                    </Button>}
-
-
-                    {isLoggedIn &&
-                    <Box
-                        display={{base: 'none', md: 'inline-flex'}}
-                        fontSize={'sm'}
-                        fontWeight={600}
-                        color={'white'}
-                        href={'#'}
-                    >
-                        <Avatar src={user?.profile?.media?.source}/>
-                    </Box>
-                    }
-
-
-                </Stack>
-            </Flex>
-
-            <Collapse in={isOpen} animateOpacity>
-                <MobileNav/>
-            </Collapse>
-        </Box>
-    );
-}
-
-const DesktopNav = () => {
-    const linkColor = useColorModeValue('gray.600', 'gray.200');
-    const linkHoverColor = useColorModeValue('gray.800', 'white');
-    const popoverContentBgColor = useColorModeValue('white', 'gray.800');
-
-    return (
-        <Stack direction={'row'} spacing={4}>
-            {NAV_ITEMS.map((navItem) => (
-                <Box key={navItem.label}>
-                    <Popover trigger={'hover'} placement={'bottom-start'}>
-                        <PopoverTrigger>
-                            <Link
-                                p={2}
-                                href={navItem.href ?? '#'}
-                                fontSize={'sm'}
-                                fontWeight={500}
-                                color={linkColor}
-                                _hover={{
-                                    textDecoration: 'none',
-                                    color: linkHoverColor,
-                                }}>
-                                {navItem.label}
+        <div className={classNavbarWrapper}>
+            <div>
+                <Container maxW={'container.xl'}>
+                    <div className={styles.navbar}>
+                        <div>
+                            <Link to={'#'}>
+                                <img src="https://shub.edu.vn/images/brand-blue.svg" alt=""/>
                             </Link>
-                        </PopoverTrigger>
+                        </div>
+                        <div className={styles.page}>
+                            <ul>
+                                <li>
+                                    <Link to={'#'}>
+                                        Trang chủ
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to={'#'}>
+                                        Khóa học
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to={'#'}>
+                                        Lớp học
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div className={styles.profile}>
 
-                        {navItem.children && (
-                            <PopoverContent
-                                border={0}
-                                boxShadow={'xl'}
-                                bg={popoverContentBgColor}
-                                p={4}
-                                rounded={'xl'}
-                                minW={'sm'}>
-                                <Stack>
-                                    {navItem.children.map((child) => (
-                                        <DesktopSubNav key={child.label} {...child} />
-                                    ))}
-                                </Stack>
-                            </PopoverContent>
-                        )}
-                    </Popover>
-                </Box>
-            ))}
-        </Stack>
-    );
-};
+                                <div>
+                                    <img
+                                        src="https://scontent.fhan5-2.fna.fbcdn.net/v/t1.6435-9/206456407_2902913926642881_1938351864490439175_n.jpg?_nc_cat=110&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=TALnlv6WFC8AX-Cnd8d&_nc_ht=scontent.fhan5-2.fna&oh=6ebdec15cded9495f84b0f80db7a03e4&oe=613A0837"
+                                        alt=""/>
+                                    <div className={styles.profile_name}>
+                                        <p>Tuấn Nguyễn</p>
+                                    </div>
+                                </div>
 
-const DesktopSubNav = ({label, href, subLabel}: NavItem) => {
-    return (
-        <Link
-            href={href}
-            role={'group'}
-            display={'block'}
-            p={2}
-            rounded={'md'}
-            _hover={{bg: useColorModeValue('pink.50', 'gray.900')}}>
-            <Stack direction={'row'} align={'center'}>
-                <Box>
-                    <Text
-                        transition={'all .3s ease'}
-                        _groupHover={{color: 'pink.400'}}
-                        fontWeight={500}>
-                        {label}
-                    </Text>
-                    <Text fontSize={'sm'}>{subLabel}</Text>
-                </Box>
-                <Flex
-                    transition={'all .3s ease'}
-                    transform={'translateX(-10px)'}
-                    opacity={0}
-                    _groupHover={{opacity: '100%', transform: 'translateX(0)'}}
-                    justify={'flex-end'}
-                    align={'center'}
-                    flex={1}>
-                    <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon}/>
-                </Flex>
-            </Stack>
-        </Link>
-    );
-};
-
-const MobileNav = () => {
-    return (
-        <Stack
-            bg={useColorModeValue('white', 'gray.800')}
-            p={4}
-            display={{md: 'none'}}>
-            {NAV_ITEMS.map((navItem) => (
-                <MobileNavItem key={navItem.label} {...navItem} />
-            ))}
-        </Stack>
-    );
-};
-
-const MobileNavItem = ({label, children, href}: NavItem) => {
-    const {isOpen, onToggle} = useDisclosure();
-
-    return (
-        <Stack spacing={4} onClick={children && onToggle}>
-            <Flex
-                py={2}
-                as={Link}
-                href={href ?? '#'}
-                justify={'space-between'}
-                align={'center'}
-                _hover={{
-                    textDecoration: 'none',
-                }}>
-                <Text
-                    fontWeight={600}
-                    color={useColorModeValue('gray.600', 'gray.200')}>
-                    {label}
-                </Text>
-                {children && (
-                    <Icon
-                        as={ChevronDownIcon}
-                        transition={'all .25s ease-in-out'}
-                        transform={isOpen ? 'rotate(180deg)' : ''}
-                        w={6}
-                        h={6}
-                    />
-                )}
-            </Flex>
-
-            <Collapse in={isOpen} animateOpacity style={{marginTop: '0!important'}}>
-                <Stack
-                    mt={2}
-                    pl={4}
-                    borderLeft={1}
-                    borderStyle={'solid'}
-                    borderColor={useColorModeValue('gray.200', 'gray.700')}
-                    align={'start'}>
-                    {children &&
-                    children.map((child) => (
-                        <Link key={child.label} py={2} href={child.href}>
-                            {child.label}
-                        </Link>
-                    ))}
-                </Stack>
-            </Collapse>
-        </Stack>
-    );
-};
-
-interface NavItem {
-    label: string;
-    subLabel?: string;
-    children?: Array<NavItem>;
-    href?: string;
+                                <div>
+                                    <span> <BellIcon/></span>
+                                    <span><TriangleDownIcon className={styles.dropdown_icon}/></span>
+                                    <span><HamburgerIcon/></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Container>
+            </div>
+        </div>
+    )
 }
 
-const NAV_ITEMS: Array<NavItem> = [
-    {
-        label: 'Learn Design',
-        href: '#',
-    },
-    {
-        label: 'Hire Designers',
-        href: '#',
-    },
-];
+export default Navbar;

@@ -31,7 +31,7 @@ function Banner() {
 
     return (
         <Box>
-            <BannerWrapper height={`${height - 60}px`}>
+            <BannerWrapper>
                 <Box>
                     <BannerContent>
                         <BannerWelcome>{trans('banner.welcome')}</BannerWelcome>

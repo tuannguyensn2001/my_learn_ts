@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 interface BannerWrapperProp {
-    height: string,
+
 }
 
 const BannerWrapper = styled.div<BannerWrapperProp>`
   width: 100%;
-  height: ${props => props.height};
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  //background-position: center;
   background-image: url("https://images.unsplash.com/photo-1503945438517-f65904a52ce6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
   display: flex;
   justify-content: center;

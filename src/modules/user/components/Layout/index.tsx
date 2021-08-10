@@ -7,6 +7,7 @@ interface LayoutProps {
 }
 
 const Body = styled.div`
+  //margin-top: 60px;
   height: calc(100% - 60px);
 `
 

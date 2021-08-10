@@ -1,30 +1,39 @@
-import {Box, Center, IconButton, Text, Flex} from '@chakra-ui/react'
-import {ChevronRightIcon} from '@chakra-ui/icons'
+import styles from './style.module.scss';
+import {HamburgerIcon} from "@chakra-ui/icons";
+import {setState} from "../../../../type/State";
+import useToggleClass from "../../hooks/useToggleClass";
 
-interface Props {
-    onShowSidebar: any
-    showSidebarButton?: boolean
+interface HeaderProp {
+    setIsOpenSidebar: setState<boolean>,
+    isOpenSidebar: boolean
 }
 
-const Header = ({showSidebarButton = true, onShowSidebar}: Props) => {
+
+function Header({setIsOpenSidebar, isOpenSidebar}: HeaderProp) {
+
+    const toggleClick = () => {
+        setIsOpenSidebar(prevState => !prevState);
+    }
+
+    const {classToggle} = useToggleClass(styles.toggle, isOpenSidebar, [styles.active])
+
     return (
-        <Flex bg="tomato" p={4} color="white" justifyContent="center">
-            <Box flex="1">
-                {showSidebarButton && (
-                    <IconButton
-                        icon={<ChevronRightIcon w={8} h={8}/>}
-                        colorScheme="blackAlpha"
-                        variant="outline"
-                        onClick={onShowSidebar}
-                        aria-label={'hihi'}/>
-                )}
-            </Box>
-            <Center flex="1" h="40px">
-                <Text fontSize="xl">Page Title</Text>
-            </Center>
-            <Box flex="1"/>
-        </Flex>
+        <div className={styles.topbar}>
+            <div onClick={toggleClick} className={classToggle}>
+                <HamburgerIcon/>
+            </div>
+            <div className={styles.search}>
+                <label htmlFor="">
+                    <input type="text" placeholder={'search here'}/>
+                </label>
+            </div>
+            <div className={styles.user}>
+                <img
+                    src="https://lh3.googleusercontent.com/proxy/aVfDNpI0_1V6jfG5RhC6kHRNr_Pb7uIo6rVQfZNLw-ecP5MiMAB4Q6UkHO0FJ-vr7ABlBoz-9uWpHPgb6ERcfiTTmq9YA75JXUltJpmxqjRZ-KvYlpYkfLT8S-rvDA"
+                    alt=""/>
+            </div>
+        </div>
     )
 }
 
-export default Header
+export default Header;
