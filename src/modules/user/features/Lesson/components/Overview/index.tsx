@@ -28,28 +28,16 @@ function Overview() {
     }, [lesson?.comments]);
 
     useEffect(() => {
-        const channel = myLearnSocket.channel('lesson-channel');
-
-        channel.listen(`.lesson-event`, (data: any) => {
-            setComments((prevState => [...prevState, data?.comment]))
-        });
 
         return () => {
-            // myLearnSocket.leaveChannel('lesson-channel');
-            // channel.stopListening('lesson-event');
+
         }
 
     }, [])
 
 
     const submitComment = (comment: string) => {
-        fetchPostComment({
-            content: comment.trim(),
-            commentable_id: Number(lesson?.id),
-            commentable_type: Comment.LESSON
-        })
-            .then(response => console.log(response))
-            .catch(err => console.log(err));
+        console.log('submit');
     }
 
 
@@ -60,7 +48,7 @@ function Overview() {
             </OverviewContent>
 
             {comments?.map((item) => {
-                return <p>{item.user.fullname}:{item.content}</p>
+                return <p key={item.id}>{item.user.fullname}:{item.content}</p>
             })}
 
 

@@ -57,9 +57,12 @@ function CourseBanner() {
             </CourseWrapper>
 
             <div>
-                <Grid templateColumns={'repeat(3,1fr)'} gap={4}>
-                    {renderCourse}
-                </Grid>
+                {/*<Grid templateColumns={'repeat(3,1fr)'} gap={4}>*/}
+                {/*    {renderCourse}*/}
+                {/*</Grid>*/}
+               <div className="row">
+                   {renderCourse}
+               </div>
             </div>
         </div>
     )

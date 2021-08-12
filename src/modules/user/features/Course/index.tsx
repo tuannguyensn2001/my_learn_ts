@@ -13,7 +13,7 @@ import {Container, Box, Button, useToast, Flex} from '@chakra-ui/react';
 import styled from 'styled-components';
 import Description from './components/Description';
 import Instructor from './components/Instructor';
-import { createBreakpoints } from '@chakra-ui/theme-tools';
+import {createBreakpoints} from '@chakra-ui/theme-tools';
 
 const CourseWrapper = styled.div`
   color: red;
@@ -52,36 +52,39 @@ function CourseDetail() {
         <Layout>
 
             <Container maxW={'container.lg'}>
-                <Flex
-                    flexDir='row-reverse'
-                    bgColor='#ccc'
-                    width='100%'>
-                    <Button
-                        position='fixed'
-                        zIndex='1'
-                        bottom='0'
-                        right={{base: '0', sm: '0', md: 'inherit'}}
-                        width={{base: '100%', sm: '100%', md: 'auto'}}
-                        padding={{base: '2rem'}}
-                        bgColor='#20cbf9'
-                        color='#fff'
-                        fontSize={{base: '1.5rem', sm: '1.3rem', md: '1rem'}}
-                        borderRadius={{base: '0', sm: '0', md: 'md'}}
-                        _hover={{
-                            bgColor: '#00a9d6',
-                            color: '#fff'
-                        }}
-                        onClick={addToCart}>Thêm vào giỏ hàng</Button>
-                </Flex>
-            
-                <Body/>
+                {/*<Flex*/}
+                {/*    flexDir='row-reverse'*/}
+                {/*    bgColor='#ccc'*/}
+                {/*    width='100%'>*/}
+                {/*    <Button*/}
+                {/*        position='fixed'*/}
+                {/*        zIndex='1'*/}
+                {/*        bottom='0'*/}
+                {/*        right={{base: '0', sm: '0', md: 'inherit'}}*/}
+                {/*        width={{base: '100%', sm: '100%', md: 'auto'}}*/}
+                {/*        padding={{base: '2rem'}}*/}
+                {/*        bgColor='#20cbf9'*/}
+                {/*        color='#fff'*/}
+                {/*        fontSize={{base: '1.5rem', sm: '1.3rem', md: '1rem'}}*/}
+                {/*        borderRadius={{base: '0', sm: '0', md: 'md'}}*/}
+                {/*        _hover={{*/}
+                {/*            bgColor: '#00a9d6',*/}
+                {/*            color: '#fff'*/}
+                {/*        }}*/}
+                {/*        onClick={addToCart}>Thêm vào giỏ hàng</Button>*/}
+                {/*</Flex>*/}
+
+                {/*<Body/>*/}
                 {currentCourse?.chapters?.map((chapter) => (
                     <CourseDropdown
-                    key={chapter.id}
-                    chapter={chapter}/>
+                        key={chapter.id}
+                        chapter={chapter}/>
                 ))}
-                <Description/>
-                <Instructor/>
+
+
+
+                {/*<Description/>*/}
+                {/*<Instructor/>*/}
             </Container>
         </Layout>
     )

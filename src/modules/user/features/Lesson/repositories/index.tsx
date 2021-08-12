@@ -32,5 +32,5 @@ export const getLessonBySlug = async (course: string, lesson: string): Promise<I
 
 export const getCourseBySlug = async (course: string): Promise<ICourse> => {
     const response: AxiosResponse = await fetchCourse(course);
-    return setIndexCourse(response.data);
+    return setIndexCourse(response.data.data);
 }

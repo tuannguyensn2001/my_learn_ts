@@ -1,7 +1,11 @@
+$blue_color: #111827;
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  //background-color: #111827;
 }
 
 *::-webkit-scrollbar-track {
@@ -30,6 +34,7 @@
   //background-color: #000;
   background-color: transparent;
   height: 60px;
+  z-index: 9999;
 
   transition: box-shadow 0.5s ease-in-out 0s;
 
@@ -115,9 +120,8 @@
     cursor: pointer;
   }
 
-  span:nth-child(3) {
+  .toggle_button {
     display: none;
-
   }
 
   svg {
@@ -127,12 +131,12 @@
   }
 
   .dropdown_icon {
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 
 .active {
-  background-color: #000;
+  background-color: $blue_color;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -148,14 +152,25 @@
       display: none;
     }
 
-    span:nth-child(2) {
+    .dropdown {
       display: none;
     }
 
-    span:nth-child(3) {
+    .toggle_button {
       display: block;
     }
 
   }
 }
 
+.auth {
+  a {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  a:first-child {
+    margin-right: 25px;
+  }
+}

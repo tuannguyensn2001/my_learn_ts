@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {ICourse} from "../../../../../models/ICourse";
 import styles from "./styled";
+import {BsPeopleFill} from "react-icons/all";
+import style from './style.module.scss';
 
 const {
     CourseItem,
@@ -17,7 +19,7 @@ const {
 } = styles;
 
 interface CourseProps {
-    course: Pick<ICourse, 'name' | 'slug' | 'price' | 'tag' | 'media'>
+    course: Pick<ICourse, 'name' | 'slug' | 'price' | 'tag' | 'media' | 'description'>
 }
 
 
@@ -35,12 +37,16 @@ function Course({course}: CourseProps) {
                 <div>
                     <Title to={`/course/${course.slug}`}>{course.name}</Title>
                 </div>
-                <Instructor>
-                    Giáo viên đó
-                </Instructor>
+                {/*<Instructor>*/}
+                {/*    Giáo viên đó*/}
+                {/*</Instructor>*/}
+                <span className={style.description}>{course.description}</span>
 
                 <Info>
-                    <User>2300</User>
+                    <User className={style.user}>
+                        <BsPeopleFill/>
+                        <p>2300</p>
+                    </User>
                     <Price>{course.price}</Price>
                 </Info>
 

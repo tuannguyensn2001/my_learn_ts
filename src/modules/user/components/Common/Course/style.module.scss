@@ -1,0 +1,22 @@
+.user {
+  display: flex;
+
+  svg {
+    height: 100%;
+    margin-right: 10px;
+  }
+}
+
+.description {
+  //display: inline-block;
+  //width: 300px;
+  //display: flex;
+  //flex-wrap: wrap;
+  //width: 100%;
+  //word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  color: #666;
+  //height: 100px;
+}

@@ -10,7 +10,7 @@ export interface initAuthState {
 }
 
 interface fetchLoginData {
-    token: string,
+    access_token: string,
     token_type: string,
     express_in: number,
     user: IUser
@@ -46,7 +46,7 @@ const authSlice = createSlice({
         builder.addCase(dispatchLogin.fulfilled, (state, {payload}) => {
             state.isLoggedIn = true;
             state.user = payload.user;
-            localStorage.setItem('token', payload.token);
+            localStorage.setItem('token', payload.access_token);
         });
         builder.addCase(dispatchMe.fulfilled, (state, {payload}) => {
             state.isLoggedIn = true;
@@ -56,9 +56,10 @@ const authSlice = createSlice({
         builder.addCase(dispatchMe.pending, (state, {payload}) => {
             state.isLoading = true;
         });
-        builder.addCase(dispatchMe.rejected, (state, {payload}) => {
+        builder.addCase(dispatchMe.rejected, (state, error) => {
             state.isLoading = false;
-            localStorage.removeItem('token');
+            console.log(error);
+            // localStorage.removeItem('token');
         })
     })
 })

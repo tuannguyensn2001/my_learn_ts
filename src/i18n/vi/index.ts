@@ -2,7 +2,7 @@ import viAdmin from "./backend";
 import viUser from "./user";
 
 const vi = {
-    user: viUser,
+    frontend: viUser,
     backend: viAdmin
 }
 

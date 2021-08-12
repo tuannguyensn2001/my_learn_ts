@@ -8,10 +8,11 @@ const CourseItem = styled.div`
   background: #fff;
   box-shadow: 0px 10px 23px -8px rgb(0 0 0 / 11%);
   overflow: hidden;
+  border-radius: 3%;
 `
 
 const ThumbnailWrapper = styled.div`
-  height: 50%;
+  height: 55%;
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
@@ -23,10 +24,12 @@ const Thumbnail = styled.img`
   width: 100%;
   height: 100%;
 
+  transition: all .3s ease;
+
 
   &:hover {
     transform: scale(1.2);
-    transition: all .3s ease;
+
   }
 `
 
@@ -53,7 +56,7 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 50%;
+  height: 45%;
 `
 
 const Title = styled(Link)`

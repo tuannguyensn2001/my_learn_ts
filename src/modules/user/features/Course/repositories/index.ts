@@ -5,7 +5,7 @@ import {fetchCourse} from "../services";
 
 export const getCourse = async (slug: string): Promise<ICourse> => {
     const response: AxiosResponse = await fetchCourse(slug);
-    const data: ICourse = response.data;
+    const data: ICourse = response.data.data;
 
     return setIndexCourse(data);
 }

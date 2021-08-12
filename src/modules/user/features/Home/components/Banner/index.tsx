@@ -13,20 +13,20 @@ const {
 } = styles;
 
 function Banner() {
-    const [height, setHeight] = useState<number>(window.innerHeight);
+    // const [height, setHeight] = useState<number>(window.innerHeight);
     const {trans} = useLocalization();
 
-    useEffect(() => {
-
-        const handleChange = (event: any) => setHeight(event.target.innerHeight);
-
-        window.addEventListener('resize', handleChange);
-
-        return () => {
-            window.removeEventListener('resize', handleChange);
-        }
-
-    }, [height])
+    // useEffect(() => {
+    //
+    //     const handleChange = (event: any) => setHeight(event.target.innerHeight);
+    //
+    //     window.addEventListener('resize', handleChange);
+    //
+    //     return () => {
+    //         window.removeEventListener('resize', handleChange);
+    //     }
+    //
+    // }, [height])
 
 
     return (

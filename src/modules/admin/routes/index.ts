@@ -11,6 +11,5 @@ const routesAdminModule: RouteProps[] = [
     ...routesAdminCourse
 ];
 
-console.log(routesAdminModule);
 
 export default routesAdminModule;

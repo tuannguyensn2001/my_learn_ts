@@ -6,9 +6,9 @@ interface User {
 }
 
 export const fetchLogin = (user: User) => {
-    return myLearnAPI.post('/api/v1/auth/login', user);
+    return myLearnAPI.post('/v1/auth/login', user);
 }
 
 export const fetchMe = () => {
-    return myLearnAPI.post('/api/v1/auth/me');
+    return myLearnAPI.get('/v1/auth/me');
 }
