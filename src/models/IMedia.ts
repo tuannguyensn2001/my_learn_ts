@@ -1,3 +1,3 @@
 export declare interface IMedia {
-    source: string
+    path: string
 }

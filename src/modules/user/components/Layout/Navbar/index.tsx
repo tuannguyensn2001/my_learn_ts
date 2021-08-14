@@ -22,6 +22,8 @@ function Navbar() {
 
     const [classNavbarWrapper, setClassNavbarWrapper] = useState<string>(styles.navbar_wrapper);
 
+    const profile = useAppSelector(state => state.auth.user?.profile);
+
     const {url} = useRouteMatch();
 
     const user = useAppSelector(state => state.auth);
@@ -92,10 +94,10 @@ function Navbar() {
                                 <>
                                     <div>
                                         <img
-                                            src="https://scontent.fhan5-2.fna.fbcdn.net/v/t1.6435-9/206456407_2902913926642881_1938351864490439175_n.jpg?_nc_cat=110&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=TALnlv6WFC8AX-Cnd8d&_nc_ht=scontent.fhan5-2.fna&oh=6ebdec15cded9495f84b0f80db7a03e4&oe=613A0837"
+                                            src={profile?.media?.path}
                                             alt=""/>
                                         <div className={styles.profile_name}>
-                                            <p>Tuấn Nguyễn</p>
+                                            <p>{profile?.fullname}</p>
                                         </div>
                                     </div>
 

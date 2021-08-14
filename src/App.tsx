@@ -12,10 +12,11 @@ function App() {
 
     return (
         <ChakraProvider>
-            <Router history={history}>
-                <UserModule/>
-                <AdminModule/>
-            </Router>
+            {/*<Router history={history}>*/}
+            {/*    <UserModule/>*/}
+            {/*    <AdminModule/>*/}
+            {/*</Router>*/}
+
         </ChakraProvider>
     );
 }

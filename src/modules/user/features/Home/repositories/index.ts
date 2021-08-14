@@ -23,7 +23,7 @@ export const getCourses = async (): Promise<ICourse[]> => {
                 }
             },
             media: {
-                source: item?.media?.source,
+                path: item?.media?.path,
             },
             pivot: item?.pivot
 

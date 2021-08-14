@@ -1,13 +1,9 @@
-import {useContext, useState, useEffect} from "react";
+import {useContext, useEffect, useState} from "react";
 import styled from "styled-components";
-import {Comment} from "../../../../../../defines/Comment";
-import {ILesson} from "../../../../../../models/ILesson";
 import LessonContext from "../../context";
-import {ILessonComment} from "../../repositories";
-import {fetchPostComment} from "../../services";
+import {Comment as CommentProp, ILessonComment} from "../../repositories";
 import InputComment from "../InputComment";
-import {Comment as CommentProp} from '../../repositories';
-import myLearnSocket from "../../../../../../config/network/socket";
+import {io, Socket} from 'socket.io-client';
 
 
 const OverviewContent = styled.div`
@@ -28,12 +24,27 @@ function Overview() {
     }, [lesson?.comments]);
 
     useEffect(() => {
+        if (!lesson) return;
+
+        const socket = io('http://localhost:5000', {
+            auth: {
+                token: localStorage.getItem('token')
+            }
+        });
+
+        // socket.on('connect', () => {
+        //
+        // });
+
+        socket.emit('join-room-lesson', {
+            lesson_id: lesson?.id
+        });
+
 
         return () => {
-
+            // socket.emit('disconnect');
         }
-
-    }, [])
+    }, [lesson])
 
 
     const submitComment = (comment: string) => {

@@ -74,7 +74,7 @@ function CourseDropdown({chapter}: CourseDropdownProp) {
             </CourseDropdownContent>
 
             {isOpen && chapter?.lessons?.map(lesson => (
-                <CourseDropdownItem lesson={lesson}/>
+                <CourseDropdownItem key={lesson.id} lesson={lesson}/>
             ))}
 
         </CourseDropdownWrapper>

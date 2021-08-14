@@ -30,7 +30,8 @@ const dispatchLogin = createAsyncThunk<fetchLoginData, User>('auth/login', async
 
 const dispatchMe = createAsyncThunk<IUser>('auth/me', async (): Promise<IUser> => {
     const response: AxiosResponse = await fetchMe();
-    return response.data as IUser;
+
+    return response.data.data as IUser;
 })
 
 
@@ -46,6 +47,7 @@ const authSlice = createSlice({
         builder.addCase(dispatchLogin.fulfilled, (state, {payload}) => {
             state.isLoggedIn = true;
             state.user = payload.user;
+
             localStorage.setItem('token', payload.access_token);
         });
         builder.addCase(dispatchMe.fulfilled, (state, {payload}) => {
@@ -58,8 +60,7 @@ const authSlice = createSlice({
         });
         builder.addCase(dispatchMe.rejected, (state, error) => {
             state.isLoading = false;
-            console.log(error);
-            // localStorage.removeItem('token');
+            localStorage.removeItem('token');
         })
     })
 })

@@ -29,7 +29,7 @@ function Course({course}: CourseProps) {
         <CourseItem>
             <ThumbnailWrapper>
                 <Link to={`/course/${course.slug}`}>
-                    <Thumbnail src={course?.media?.source}/>
+                    <Thumbnail src={course?.media?.path}/>
                 </Link>
                 <Category to={'/'}>{course?.tag?.category?.name}</Category>
             </ThumbnailWrapper>

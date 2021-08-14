@@ -1,7 +1,11 @@
 import Layout from "../../components/Layout";
 import styles from './style.module.scss';
+import {useTranslation} from "react-i18next";
+
+// interface, generic
 
 function Profile() {
+    const {t} = useTranslation();
     return (
         <Layout>
             {/*<div className={styles.profile}>*/}
@@ -13,7 +17,7 @@ function Profile() {
             {/*    </div>*/}
             {/*</div>*/}
             <div className="container">
-                hello
+                {t('frontend.auth.login')}
             </div>
         </Layout>
     )
