@@ -1,6 +1,240 @@
-$primary_color : #000000;
+$primary-color: #423f3f;
+$field-margin: 1.5rem;
+$primary-padding: 1.6rem;
+$border-color: rgb(201, 235, 255);
+$button-color: #0464fc;
 
+* {
+  color: $primary-color;
+}
+.cover {
+  margin-top: 6rem;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
+  margin-bottom: 10rem;
+}
 
-.profile {
+/*  HEADER  */
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.6rem 1rem 1.6rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  box-shadow: 0 2px 2px rgb(0 0 0 / 20%);
+}
+.header-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.header-other {
+  display: flex;
+  font-size: 1.3rem;
+  align-items: center;
+}
+.header-other-avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 1.8rem;
+  border: 1px solid $border-color;
+  margin: auto;
+}
+.header-other-bell,
+.header-other-avatar,
+.header-other-more {
+  margin-left: 0.5rem;
+}
+.header-other-bell:hover,
+.header-other-avatar:hover,
+.header-other-more:hover {
+  cursor: pointer;
+}
+
+/*  NAVBAR  */
+
+.sub-cover {
+  display: flex;
+}
+.list {
+  list-style-type: none;
+  height: inherit;
+}
+.list-item {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  padding-left: $primary-padding;
+  padding-right: 1.4rem;
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
+}
+.list-item-icon {
+  margin-right: $primary-padding;
+}
+.list-item-title,
+.list-item-icon path,
+.list-item-focus path {
+  color: #7a7575;
+}
+.list-item-title {
+  font-weight: 500;
+}
+.list-item-focus {
+  font-size: 1.3rem;
+  margin-left: 0.5rem;
+  // display: none;
+}
+.list-item:hover {
+  cursor: pointer;
+}
+.list-item:hover .list-item-title,
+.list-item:hover .list-item-icon path,
+.list-item:hover .list-item-focus path {
+  color: $primary-color;
+}
+
+/*  INFO  */
+
+.info {
+  padding-left: $primary-padding;
+  border-left: 1px solid rgba(0 0 0 / 10%);
+  max-width: 26rem;
+  padding-bottom: 1rem;
+}
+.info-title {
+  font-size: $primary-padding;
+  font-weight: 700;
+  padding-top: 1rem;
+  margin-bottom: 1.8rem;
+}
+.info-avatar {
+  border-radius: 50%;
+  width: 6rem;
+  border: 1px solid $border-color;
+  margin: auto;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.avatar {
+  border-radius: 50%;
+}
+.avatar-edit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: $button-color;
+  border-radius: 50%;
+  padding: 0.4rem;
+  box-shadow: 0 2px 2px rgb(0 0 0 / 20%);
+}
+.avatar-edit path {
+  color: #fff;
+}
+.avatar-edit:hover {
+  cursor: pointer;
+}
+.info-form {
+  margin-top: 1rem;
+}
+.form-name {
+  display: flex;
+}
+.guild-text {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+.form-contact {
+  width: 100%;
+}
+.form-address {
+  display: flex;
+  flex-wrap: wrap;
+}
+.input-field {
+  border: 1px solid $border-color;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  padding: 0.2rem;
+  width: 100%;
+}
+.input-field:focus-visible {
+  outline: none;
+}
+.form-address-country,
+.form-address-state,
+.form-name-last-name {
+  margin-left: $field-margin;
+}
+.form-btn {
+  border: 1px solid $button-color;
+  background-color: $button-color;
+  color: #fff;
+  padding: 0.5rem 1.8rem;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 2px 2px rgb(0 0 0 / 20%);
+}
+.form-btn:hover {
+  opacity: 0.8;
+}
+
+// Extra large mobile
+@media (max-width: 768px) {
+  /*  NAVBAR  */
+  .header-title {
+    font-size: 1.7rem;
+  }
+  .header-other-avatar {
+    width: 2.2rem;
+  }
+  /*  INFO  */
+  .info {
+    width: 100%;
+    padding-right: 1.6rem;
+  }
+  .info-avatar {
+    width: 10rem;
+  }
+  .guild-text {
+    font-size: 1.1rem;
+  }
+  .avatar-edit {
+    font-size: 1.5rem;
+    padding: 0.8rem;
+  }
+  .form-address,
+  .form-name {
+    display: block;
+  }
+  .input-field {
+    width: 100%;
+  }
+  .form-address-country,
+  .form-address-state,
+  .form-name-last-name {
+    margin-left: 0;
+  }
+  /*  SUBMIT BUTTON  */
+  .form-btn {
+    width: 100%;
+  }
+}
+
+// Mobile
+@media (max-width: 576px) {
+  /*  NAVBAR  */
+  .list-item-title,
+  .list-item-focus {
+    display: none;
+  }
+  .list-item {
+    padding: 2.5rem 1.5rem;
+  }
+  .list-item-icon {
+    margin: 0;
+  }
+  .list-item-icon {
+    font-size: 1.2rem;
+  }
 }
