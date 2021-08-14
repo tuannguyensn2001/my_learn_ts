@@ -1,0 +1,14 @@
+.more {
+  @apply p-2 rounded-full hover:bg-gray-300 relative;
+
+  &:hover {
+    .more_item {
+      display: block;
+    }
+  }
+}
+
+.more_item {
+  width: 250px;
+  @apply absolute left-4 top-3 bg-white hidden
+}

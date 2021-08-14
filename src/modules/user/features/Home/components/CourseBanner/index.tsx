@@ -41,14 +41,15 @@ function CourseBanner() {
 
     const renderCourse = courses?.map(course => {
         return (
-            <div key={course.id} className="col-md-4 col-sm-12 col-lg-4">
+            <div key={course.id}
+            >
                 <Course course={course}/>
             </div>
         )
     })
 
     return (
-        <div className="container">
+        <div>
             <CourseWrapper>
                 <CourseContent>
                     <Slogan>{trans('courseBanner.slogan')}</Slogan>
@@ -60,9 +61,9 @@ function CourseBanner() {
                 {/*<Grid templateColumns={'repeat(3,1fr)'} gap={4}>*/}
                 {/*    {renderCourse}*/}
                 {/*</Grid>*/}
-               <div className="row">
-                   {renderCourse}
-               </div>
+                <div className={'grid grid-cols-3  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 '}>
+                    {renderCourse}
+                </div>
             </div>
         </div>
     )

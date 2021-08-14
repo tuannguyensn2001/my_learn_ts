@@ -2,7 +2,6 @@ import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 const CourseItem = styled.div`
-  margin-top: 30px;
   width: 100%;
   height: 400px;
   background: #fff;

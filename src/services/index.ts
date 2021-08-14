@@ -8,3 +8,4 @@ export const fetchUploadFile = (form: FormData) => {
 export const refresh = () => {
     return myLearnAPI.get('/v1/auth/refresh');
 }
+

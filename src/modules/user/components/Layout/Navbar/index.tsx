@@ -61,7 +61,7 @@ function Navbar() {
     return (
         <div className={classNavbarWrapper}>
             <div>
-                <Container maxW={'container.xl'}>
+                <div className={'container'}>
                     <div className={styles.navbar}>
                         <div>
                             <Link to={'/'}>
@@ -81,7 +81,7 @@ function Navbar() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to={'#'}>
+                                    <Link to={'/classroom'}>
                                         Lớp học
                                     </Link>
                                 </li>
@@ -132,7 +132,7 @@ function Navbar() {
 
                         </div>
                     </div>
-                </Container>
+                </div>
             </div>
         </div>
     )

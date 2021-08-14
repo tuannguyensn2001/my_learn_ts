@@ -12,15 +12,15 @@ function Home() {
             left: 0,
             behavior: 'smooth'
         });
-    },[])
+    }, [])
 
     return (
         <Layout>
             <div>
                 <Banner/>
-                <Container maxW={'container.xl'}>
+                <div className={'container'}>
                     <CourseBanner/>
-                </Container>
+                </div>
             </div>
         </Layout>
     )

@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form-checkbox:focus {
+    --tw-ring-offset-width: 0;
+}
+
+.form-checkbox:hover {
+    cursor: pointer !important;
+}
+
+.disabled {
+    pointer-events: none;
+}
