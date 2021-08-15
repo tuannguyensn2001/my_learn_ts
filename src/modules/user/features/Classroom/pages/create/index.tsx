@@ -3,14 +3,14 @@ import {FormControl, FormLabel, Input, Switch} from "@chakra-ui/react"
 import {useQuery} from "react-query";
 import {ITag} from "../../../../../../models/ITag";
 import {getTags} from "../../../../repositories";
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {useForm} from "react-hook-form";
 
 interface CreateClassroomFormData {
     name: string,
     is_private_code: boolean
     private_code: string,
-    is_accept: boolean
+    is_accept: boolean,
 }
 
 
@@ -24,9 +24,41 @@ function CreateClassroom() {
 
     const pickTag = (choice: string) => setTag(choice);
 
-    const {register, handleSubmit} = useForm<CreateClassroomFormData>();
+    const {register, handleSubmit, watch} = useForm<CreateClassroomFormData>();
+
+    const submitForm = (data: CreateClassroomFormData) => {
+        console.log(data);
+    }
 
 
+    const checkValueForm = () => {
+        return [
+            {
+                id: 1,
+                text: 'Đặt tên lớp học',
+                isValid: !!watch('name'),
+                required: true
+            },
+            {
+                id: 2,
+                text: 'Thêm mã bảo vệ',
+                isValid: watch('is_private_code') && !!watch('private_code'),
+                required: false,
+            },
+            {
+                id: 3,
+                text: 'Bật phê duyệt học sinh',
+                isValid: watch('is_accept'),
+                required: false,
+            },
+            {
+                id: 4,
+                text: 'Chọn chủ đề học',
+                isValid: !!tag,
+                required: true
+            }
+        ]
+    }
 
 
     return (
@@ -49,7 +81,12 @@ function CreateClassroom() {
                                         </FormLabel>
                                         <Switch {...register('is_private_code')} id="private_code"/>
                                     </FormControl>
-                                    <Input {...register('private_code')} className={'mt-3'}/>
+                                    {watch('is_private_code') &&
+                                    <Input
+                                        {...register('private_code')}
+                                        className={'mt-3'}
+                                        placeholder={'Nhập mã bảo vệ'}
+                                    />}
                                 </div>
                                 <div className={'mt-7'}>
                                     <FormControl display="flex" justifyContent={'space-between'}>
@@ -88,25 +125,26 @@ function CreateClassroom() {
                                 <h1 className={'font-semibold font-lg'}>Các bước đã thực hiện</h1>
 
                                 <ul>
-                                    {[1, 2].map(item => (
-                                        <li key={item} className={'flex mt-5'}>
-
+                                    {checkValueForm().map((item) => (
+                                        <li key={item.id} className={'flex mt-5'}>
                                             <div>
                                                 <input
-                                                    id={'name'}
+                                                    checked={!!item.isValid}
                                                     type="checkbox"
                                                     className={'form-checkbox  border-2 text-green-500'}/>
                                             </div>
                                             <p
                                                 className={'ml-5'}
-                                            >Đặt tên lớp học</p>
+                                            >{item.text}</p>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
 
                             <button
-                                className={'w-full disabled  bg-blue-500 text-white font-medium h-10 rounded hover:bg-blue-700 mt-10'}
+                                disabled={!!checkValueForm().find(item => !item.isValid && item.required)}
+                                className={'w-full    disabled:opacity-50  bg-blue-500 text-white font-medium h-10 rounded hover:bg-blue-700 mt-10'}
+                                onClick={handleSubmit(submitForm)}
                             >
                                 Tạo mới
                             </button>

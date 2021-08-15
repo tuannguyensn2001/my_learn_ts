@@ -10,6 +10,6 @@
     cursor: pointer !important;
 }
 
-.disabled {
+button:disabled {
     pointer-events: none;
 }
