@@ -38,7 +38,7 @@ function CourseDetail() {
             width: sectionActive.offsetWidth + 'px'
         })
         
-        tabs.forEach((tab: any, index: any) => {
+        tabs.forEach((tab: any) => {
             tab.onclick = function () {
                 //Styling line onclick
                 Object.assign(line.style, {
@@ -158,7 +158,7 @@ function CourseDetail() {
                         </div>
                     </div>
 
-                    <button className="show-all mx-auto mt-4 gt_md:px-8 lt_lg:w-full py-4 hover:bg-red-600 bg-red-500 cursor-pointer rounded-xl text-lg font-medium text-white">Show all courses</button>
+                    <button className="show-all mx-auto mt-4 gt_md:px-8 lt_lg:w-full py-4 hover:bg-red-600 bg-red-500 cursor-pointer rounded text-lg font-medium text-white">Show all courses</button>
                 </div>
 
             </div>
