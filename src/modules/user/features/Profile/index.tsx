@@ -22,22 +22,10 @@ function Profile() {
 
     return (
         <Layout>
-
-
-
-            <div className=" mx-auto w-3/5 h-full ">
-                <div className={'rounded shadow'}>
-                    <div className={styles['header']}>
-                        <div className={styles["header-title"]}>My Profile</div>
-                        <div className={styles["header-other"]}>
-                            <div className={styles["header-other-bell"]}><BsBellFill/></div>
-                            <div className={styles["header-other-avatar"]}>
-                                <img width="100%"
-                                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpvmy_MjZETnhkHX8ZlB3eExZG9xu05S_7RA&usqp=CAU"
-                                     alt="Profile Picture"/>
-                            </div>
-                            <div className={styles["header-other-more"]}><RiArrowDownSLine/></div>
-                        </div>
+            <div className="mx-auto w-4/5 h-full mt-24 rounded-md">
+                <div className={'rounded shadow-md'}>
+                    <div className="px-4 py-6 rounded-t-md border-b shadow-sm">
+                        <div className="font-bold text-2xl">My Profile</div>
                     </div>
                     <div className={styles["sub-cover"]}>
                         <div className={' lg:w-1/4 '}>
@@ -61,7 +49,7 @@ function Profile() {
                         </div>
                         <div
                             // className={styles.info}
-                            className={'w-full lg:w-3/4 '}
+                            className={'w-full lg:w-3/4 max-w-md pb-4 border-l border-gray-300 px-7'}
                         >
                           <div>
                               <div className={styles["info-title"]}>Edit Profile</div>
