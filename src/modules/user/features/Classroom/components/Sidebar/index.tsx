@@ -1,10 +1,14 @@
 import {FiSettings} from "react-icons/all";
-import {Link} from 'react-router-dom';
+import {Link,useRouteMatch} from 'react-router-dom';
 import {Tooltip} from "@chakra-ui/react";
 import {BiWorld} from "react-icons/all";
 import {BiUser} from "react-icons/all";
 
+
 function Sidebar() {
+
+    const {path,url} = useRouteMatch();
+
     return (
         <div className={'mt-10 mr-6 grid grid-rows-2 gap-4 divide-y '}>
 
@@ -34,19 +38,18 @@ function Sidebar() {
                 </div>
             </div>
 
-            <div >
+            <div>
                 <ul className={'mt-5'}>
-                    {[1, 2, 3].map(item => (
-                        <li key={item} className={'flex transition rounded-xl hover:bg-gray-200 cursor-pointer p-1'}>
-                            <div className={'text-md flex flex-col justify-center'}>
-                                <BiUser/>
 
-                            </div>
-                            <div className={'ml-5'}>
-                                <p>Bảng tin</p>
-                            </div>
-                        </li>
-                    ))}
+                    <li className={'flex transition rounded-xl hover:bg-gray-200 cursor-pointer p-1'}>
+                        <div className={'text-md flex flex-col justify-center'}>
+                            <BiUser/>
+
+                        </div>
+                        <div className={'ml-5'}>
+                            {/*<Link to={} >Bảng tin</Link>*/}
+                        </div>
+                    </li>
                 </ul>
             </div>
 
