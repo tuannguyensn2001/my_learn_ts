@@ -12,7 +12,7 @@ function ClassroomItem() {
 
     return (
         <Link
-            to={'/'}
+            to={'/classroom/123'}
             className={'border transition duration-100 ease-in-out rounded-md border-gray-200 p-5 flex  justify-between hover:bg-gray-100 hover:cursor-pointer'}
         >
             <div className={'flex'}>

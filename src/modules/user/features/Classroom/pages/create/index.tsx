@@ -22,13 +22,14 @@ function CreateClassroom() {
         return await getTags();
     });
 
-    const pickTag = (choice: string) => setTag(choice);
 
     const {register, handleSubmit, watch} = useForm<CreateClassroomFormData>();
 
     const submitForm = (data: CreateClassroomFormData) => {
         console.log(data);
     }
+
+    const pickTag = (choice: string) => setTag(choice);
 
 
     const checkValueForm = () => {

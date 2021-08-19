@@ -15,6 +15,7 @@ function Overview() {
 
     const {lesson}: { lesson: ILessonComment | null } = useContext(LessonContext);
     const [comments, setComments] = useState<CommentProp[] | []>([]);
+    const [socket, setSocket] = useState<Socket>();
 
     useEffect(() => {
         if (!Array.isArray(lesson?.comments)) return;
@@ -24,27 +25,29 @@ function Overview() {
     }, [lesson?.comments]);
 
     useEffect(() => {
-        if (!lesson) return;
-
-        const socket = io('http://localhost:5000', {
+        setSocket(io('http://localhost:5000', {
             auth: {
-                token: localStorage.getItem('token')
+                token: Math.random()
             }
-        });
+        }))
+    }, []);
 
-        // socket.on('connect', () => {
-        //
+
+    useEffect(() => {
+        if (!lesson) return;
+        if (!socket) return;
+
+        // socket.emit('join-room-lesson', {
+        //     lesson_id: lesson?.id
         // });
-
-        socket.emit('join-room-lesson', {
-            lesson_id: lesson?.id
-        });
+        //
+        // socket.on(`join-success`, data => console.log(data));
 
 
         return () => {
             // socket.emit('disconnect');
         }
-    }, [lesson])
+    }, [lesson, socket]);
 
 
     const submitComment = (comment: string) => {

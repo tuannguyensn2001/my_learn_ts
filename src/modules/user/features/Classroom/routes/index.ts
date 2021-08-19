@@ -11,6 +11,10 @@ const routeClassroom: RouteProps[] = [
     {
         path: '/classroom/create',
         component: React.lazy(() => import('../pages/create'))
+    },
+    {
+        path: '/classroom/:id',
+        component: React.lazy(() => import('../pages/show'))
     }
 ]
 
