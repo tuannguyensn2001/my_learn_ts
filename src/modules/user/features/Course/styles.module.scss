@@ -1,13 +1,7 @@
 .link-sep {
-  @apply text-2xl;
+    @apply text-2xl;
 }
 
 .link-sep path {
-  color: white;
-}
-
-.preview-vid {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
+    color: white;
 }

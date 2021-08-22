@@ -1,0 +1,16 @@
+.add-image {
+    margin-right: 0.5rem;
+}
+
+.add-image path {
+    @apply text-blue-400;
+}
+
+.post-text {
+    @apply w-full h-auto outline-none;
+}
+
+.post-text[contentEditable]:empty::before {
+    content: 'Nhập nội dung thảo luận với khóa học...';
+    color: gray;
+}
