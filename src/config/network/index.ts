@@ -3,7 +3,7 @@ import {refresh} from "../../services";
 
 const myLearnAPI: AxiosInstance = axios.create();
 
-myLearnAPI.defaults.baseURL = process.env.REACT_APP_BASE_BACKEND || 'http://my_learn_laravel.test/api';
+myLearnAPI.defaults.baseURL = process.env.REACT_APP_BASE_BACKEND || 'http://localhost/api';
 
 
 const token = localStorage.getItem('token');

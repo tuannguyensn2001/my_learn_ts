@@ -1,16 +1,21 @@
 import Layout from "../../../../components/Layout";
 import {FormControl, FormLabel, Input, Switch} from "@chakra-ui/react"
-import {useQuery} from "react-query";
+import {useMutation, useQuery} from "react-query";
 import {ITag} from "../../../../../../models/ITag";
 import {getTags} from "../../../../repositories";
 import {useEffect, useMemo, useState} from "react";
 import {useForm} from "react-hook-form";
+import {Response} from "../../../../../../defines/Response";
+import {IClassroom} from "../../../../../../models/IClassroom";
+import {AxiosError, AxiosResponse} from "axios";
+import {fetchCreateClassroom} from "../../services";
 
-interface CreateClassroomFormData {
+export interface CreateClassroomFormData {
     name: string,
     is_private_code: boolean
     private_code: string,
     is_accept: boolean,
+    tag_id: string
 }
 
 
@@ -25,8 +30,18 @@ function CreateClassroom() {
 
     const {register, handleSubmit, watch} = useForm<CreateClassroomFormData>();
 
+    const createClassroom = useMutation<AxiosResponse<Response<IClassroom>>, AxiosError<Response<any>>, CreateClassroomFormData>('create',
+        (data: CreateClassroomFormData) => fetchCreateClassroom(data)
+        , {
+            onSuccess(response) {
+                const data = response.data.message;
+                console.log(data);
+            }
+        })
+
     const submitForm = (data: CreateClassroomFormData) => {
-        console.log(data);
+        data.tag_id = tag;
+        createClassroom.mutate(data);
     }
 
     const pickTag = (choice: string) => setTag(choice);

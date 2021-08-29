@@ -60,7 +60,7 @@ const authSlice = createSlice({
         });
         builder.addCase(dispatchMe.rejected, (state, error) => {
             state.isLoading = false;
-            localStorage.removeItem('token');
+            // localStorage.removeItem('token');
         })
     })
 })
